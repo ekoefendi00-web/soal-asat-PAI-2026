@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian ASAT PAI 2026 - Digital Sistem</title>
+    <style>
+        :root {
+            --p: #2c3e50; --s: #27ae60; --d: #e74c3c; --l: #f4f7f6; --a: #2980b9;
+        }
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); 
+            display: flex; justify-content: center; align-items: center; 
+            min-height: 100vh; margin: 0; 
+        }
+        .card { 
+            background: white; width: 95%; max-width: 500px; 
+            padding: 30px; border-radius: 20px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3); text-align: center; 
+            box-sizing: border-box;
+        }
+        .hidden { display: none; }
+        
+        .logo-container { text-align: center; margin-bottom: 15px; }
+        .logo-img {
+            width: 200px;
+            height: auto;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
+        }
+
+        h2 { color: var(--p); margin: 10px 0 20px 0; text-transform: uppercase; letter-spacing: 1px; font-size: 1.1rem; line-height: 1.4; }
+        .input-box { text-align: left; margin-bottom: 15px; }
+        label { font-size: 0.85rem; font-weight: bold; color: #555; }
+        input, select { 
+            width: 100%; padding: 12px; margin-top: 5px; 
+            border: 2px solid #eee; border-radius: 8px; box-sizing: border-box; font-size: 1rem;
+        }
+        .btn { 
+            width: 100%; padding: 14px; border: none; border-radius: 10px; 
+            cursor: pointer; font-weight: bold; margin-top: 10px; 
+            transition: 0.3s; font-size: 1rem; 
+        }
+        .btn-start { background: var(--a); color: white; }
+        .btn-next { background: var(--p); color: white; margin-top: 20px; display: none; }
+        .btn-prev { background: #95a5a6; color: white; margin-top: 10px; display: none; }
+        .btn-opt { 
+            background: #fff; border: 2px solid #eee; 
+            text-align: left; margin-bottom: 10px; font-size: 0.95rem; 
+            padding: 15px; width: 100%; border-radius: 10px; cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-opt:hover { background: #f8f9fa; border-color: var(--a); }
+        .selected { background: var(--a) !important; color: white; border-color: var(--a); }
+        .stats { 
+            background: #f9f9f9; padding: 15px; border-radius: 10px; 
+            text-align: left; margin-top: 15px; font-size: 0.9rem; 
+            border-left: 5px solid var(--a); 
+        }
+        #status-upload { font-weight: bold; margin-top: 10px; font-size: 0.8rem; }
+        
+        #q-passage { 
+            text-align: left; font-size: 0.95rem; margin-bottom: 10px; 
+            background: #f1f4f8; padding: 10px; border-radius: 8px; color: #444;
+        }
+
+        /* GAYA KHUSUS ARAB */
+        .arabic {
+            font-size: 1.7rem;
+            direction: rtl;
+            line-height: 2;
+            display: inline-block;
+            margin: 5px 0;
+            font-family: 'Traditional Arabic', serif;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="screen-login" class="card">
+        <div class="logo-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS3whNAudI3nftBF35LRwT9JVjcPtH0AHTVg&s" alt="Logo" class="logo-img">
+        </div>
+        <h2>ASESMEN SUMATIF AKHIR TAHUN 2026</h2>
+        <div class="input-box">
+            <label>Nama Lengkap Siswa</label>
+            <input type="text" id="input-nama" placeholder="Ketik nama lengkap...">
+        </div>
+        <div class="input-box">
+            <label>Pilih Sekolah / Lembaga</label>
+            <select id="input-lembaga">
+                <option value="">-- Pilih Sekolah --</option>
+                <option value="SD Negeri Bandungrejo I">SD Negeri Bandungrejo I</option>
+                <option value="SD Negeri Bandungrejo II">SD Negeri Bandungrejo II</option>
+                <option value="SD Negeri Bareng I">SD Negeri Bareng I</option>
+                <option value="SD Negeri Bareng II">SD Negeri Bareng II</option>
+                <option value="SD Negeri Butoh I">SD Negeri Butoh I</option>
+                <option value="SD Negeri Butoh II">SD Negeri Butoh II</option>
+                <option value="SD Negeri Dukohkidul">SD Negeri Dukohkidul</option>
+                <option value="SD Negeri Jampet I">SD Negeri Jampet I</option>
+                <option value="SD Negeri Jelu I">SD Negeri Jelu I</option>
+                <option value="SD Negeri Jelu II">SD Negeri Jelu II</option>
+                <option value="SD Negeri Kolong I">SD Negeri Kolong I</option>
+                <option value="SD Negeri Kolong II">SD Negeri Kolong II</option>
+                <option value="SD Negeri Mediyunan I">SD Negeri Mediyunan I</option>
+                <option value="SD Negeri Mediyunan II">SD Negeri Mediyunan II</option>
+                <option value="SD Negeri Ngadiluwih">SD Negeri Ngadiluwih</option>
+                <option value="SD Negeri Ngantru">SD Negeri Ngantru</option>
+                <option value="SD Negeri Ngasem I">SD Negeri Ngasem I</option>
+                <option value="SD Negeri Ngasem III">SD Negeri Ngasem III</option>
+                <option value="SD Negeri Sendangahrjo">SD Negeri Sendangahrjo</option>
+                <option value="SD Negeri Setren I">SD Negeri Setren I</option>
+                <option value="SD Negeri Setren II">SD Negeri Setren II</option>
+                <option value="SD Negeri Setren IV">SD Negeri Setren IV</option>
+                <option value="SD Negeri Tengger">SD Negeri Tengger</option>
+                <option value="SD Negeri Trenggulunan I">SD Negeri Trenggulunan I</option>
+                <option value="SD Negeri Trenggulunan II">SD Negeri Trenggulunan II</option>
+                <option value="SD Negeri Wadang I">SD Negeri Wadang I</option>
+                <option value="SD Negeri Wadang II">SD Negeri Wadang II</option>
+                <option value="SD Negeri Wadang III">SD Negeri Wadang III</option>
+                <option value="SD IT Syakur Al Marzuqi">SD IT Syakur Al Marzuqi</option>
+            </select>
+        </div>
+        <button class="btn btn-start" onclick="handleStart()">MULAI UJIAN</button>
+    </div>
+
+    <div id="screen-quiz" class="card hidden">
+        <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#666; margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px;">
+            <div style="text-align:left;">
+                <b id="user-display" style="color:var(--a);"></b><br>
+                <span id="school-display"></span>
+            </div>
+            <div style="text-align:right;">
+                <b>PROGRES</b><br>
+                <span id="progress-display"></span>
+            </div>
+        </div>
+        <div id="q-passage" class="hidden"></div>
+        <p id="q-text" style="font-size:1.1rem; font-weight:bold; text-align:left; line-height:1.4; color:var(--p);"></p>
+        <div id="opt-container"></div>
+        
+        <button id="btn-next" class="btn btn-next" onclick="nextQuestion()">SOAL BERIKUTNYA →</button>
+        <button id="btn-prev" class="btn btn-prev" onclick="prevQuestion()">← KEMBALI</button>
+    </div>
+
+    <div id="screen-result" class="card hidden">
+        <div class="logo-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS3whNAudI3nftBF35LRwT9JVjcPtH0AHTVg&s" alt="Logo" class="logo-img">
+        </div>
+        <h2>HASIL AKHIR</h2>
+        <h1 id="score-final" style="font-size:5rem; color:var(--s); margin:0;">0</h1>
+        <div id="summary-text" class="stats"></div>
+        <div id="status-upload">Menghubungkan ke database...</div>
+        <button class="btn btn-start" style="margin-top:20px;" onclick="location.reload()">KEMBALI KE AWAL</button>
+    </div>
+
+<script>
+    const URL_GOOGLE_SCRIPT = "GANTI_DENGAN_URL_WEB_APP_ANDA";
+
+    let currentIdx = 0;
+    let userAnswers = []; 
+    let namaUser = "";
+    let namaLembaga = "";
+
+    const db = [
+        { passage: "<b>Perhatikan pernyataan-pernyataan berikut !</b> <br> 1) Menghina anak yatim <br> 2) Mengasuh anak yatim <br> 3) Memberikan hak anak yatim <br> 4) Menyakiti hati anak yatim", q: "Yang termasuk hal-hal yang tidak boleh kita lakukan terhadap anak yatim ditujukan oleh nomor….", o: ["1 dan 3", "1 dan 4", "2 dan 3", "2 dan 4"], a: 1 },
+        { q: "Arti ayat <span class='arabic'>فَذَٰلِكَ ٱلَّذِى يَدُعُّ ٱلْيَتِيمَ</span> adalah….", o: ["Mendustakan agama", "Menghardik anak yatim", "Berbuat riya’", "Enggan memberikan bantuan"], a: 1 },
+        { q: "Asmaul husna <span class='arabic'>ٱلْقَيُّومُ</span> harus diteladani dalam kehidupan sehari-hari, yaitu dengan membiasakan perilaku …. ", o: ["Jujur", "Mandiri", "Sabar", "Pantang menyerah"], a: 1 },
+        { q: "Allah SWT. Maha kuat Allah SWT. Menciptakan dan mengatur alam semesta beserta isinya sendiri dengan kekuatan-Nya. Allah SWT adalah …. ", o: ["Al-Qayyum", "Al-Qawiyyu", "Al-Muhyi", "Al-Mumit"], a: 1 },
+        { passage: "<b>Perhatikan pernyataan berikut!</b><br>1) Memaksakan kehendak kepada orang lain <br>2) Menerima perbedaan <br>3) Mempermasalahkan perbedaan yang ada <br>4) Menghargai keyakinan orang lain", q: "Cara menghargai perbedaan di antara sesama ditunjukkan oleh nomor….", o: ["1 dan 2", "1 dan 3", "2 dan 3", "2 dan 4"], a: 3 },
+        { q: "Usaha peduli sesama dilakukan dengan menumbuhkan sikap….", o: ["Empati", "Sombong", "Kikir", "Dengki"], a: 0 },
+        { passage: "<b>Perhatikan pernyataan-pernyataan berikut :</b><br>1) Menambah beban orang lain<br>2) Menghindarkan diri dari sifat kikir<br>3) Mendatangkan musibah<br>4) Melipatgandakan rezeki", q: "Berdasarkan pernyataan tersebut, yang termasuk hikmah berbagi ditunjukan oleh nomor …. ", o: ["1 dan 2", "1 dan 3", "2 dan 3", "2 dan 4"], a: 3 },
+        { q: "Perjanjian Hudaibiyah berisi tentang….", o: ["Perdamaian antara kaum Quraisy Makkah dan kaum Muslim Madinah", "Peperangan antara kaum Quraisy Makkah dan kaum Muslim Madinah ", "Bergabungnya kaum Quraisy Makkah dan kaum Muslim Madinah untuk menunaikan haji ", "Berpisahnya kaum Quraisy Makkah dan kaum Muslim Madinah saat menunaikan ibadah haji"], a: 0 },
+        { passage: "<b>Perhatikan ilustrsi berikut !  :</b><br>Indonesia Negara yang terdiri dari berbagai suku bangsa, ras, bahasa, dan agama. Akan tetapi, Pemerintah Indonesia menghormati dan memberikan kebebasan kepada rakyatnya untuk beragama menurut keyakinannya. Salah satu bentuk penghormatan pemerintah yaitu dengan diliburkannya hari-hari besar keagamaan. Hal ini dilakukan agar tercipta keharmonisan diantara sesama umat beragama",  q: "Berdasarkan ilustrasi di atas, ciri toleransi adalah….", o: ["Ta’awun", "Tawadu’", "Penyantun", "Menghormati"], a: 3 },
+        { q: "Hari kiamat dimana gunung berhamburan dijelaskan dalam surah….", o: ["Al-Qadr", "Al-Fiil", "Al-Zalzalah", "Al-Qariah"], a: 3 },
+        { q: "Tempat berkumpulnya seluruh makhluk setelah kiamat dinamakan….", o: ["Mizan", "Hisab", "Baats", "Mahsyar"], a: 3 },
+        { q: "Interaksi kepada teman non muslim dilarang dalam hal….", o: ["Ekonomi", "Ibadah", "Politik", "Sosial"], a: 1 },
+        { q: "Doni merupakan seseorang yang yang pandai dalam bergaul. Dalam bergaul ia tidak membedakan status orang orang lain. Oleh karena itu, banyak orang yang menyukai dan akrab dengannya. Hikmah dari sikap tidak membeda-bedakan yang ditujukan Doni adalah....", o: ["Banyak teman", "Nama baik", "Minimalisir saingan", "Diri berharga"], a: 0 },
+        { q: "Di bawah ini yang bukan termasuk hewan kurban adalah….", o: ["Sapi", "Unta", "Kambing", "Ayam"], a: 3 },
+        { passage: "<b>Perhatikan nama-nama di bawah ini !:</b><br>1) Abu Bakar<br>2) Abu Jahal<br>3) Umar bin Khattab<br>4) Musailamah al-Kazzab<br>5) Utsman bin Affan", q: "Nama yang BUKAN termasuk khulafaurasyidin adalah nomor….", o: ["2 dan 5", "4 dan 5", "2 dan 4", "1 dan 3"], a: 2 },
+        { q: "Sahabat Nabi yang masuk Islam karena ajakan Abu Bakar adalah….", o: ["Umar", "Ali", "Usman bin Affan", "Abu Lahab"], a: 2 },
+        { q: "Surah <span class='arabic'>ٱلضُّحَىٰ</span> ayat 2 adalah….", o: ["<span class='arabic'>وَٱلضُّحَىٰ</span>", "<span class='arabic'>وَٱلَّيْلِ إِذَا سَجَىٰ</span>", "<span class='arabic'>مَا وَدَّعَكَ رَبُّكَ</span>", "<span class='arabic'>وَلَلْـَٔاخِرَةُ</span>"], a: 1 },
+        { passage: "1) Berbagi makanan<br>2) Membentak pengemis<br>3) Menelantarkan anak yatim<br>4) Membantu yang kesusahan", q: "Yang BUKAN perilaku meneladani surah Ad-Duha adalah….", o: ["1 dan 2", "2 dan 3", "3 dan 4", "1 dan 5"], a: 1 },
+        { q: "Sedekah yang terus mengalir pahalanya meskipun orang yang bersedekah telah meninggal dunia karena barang yang disedekahkan masih terus dimanfaatkan disebut …. ", o: ["Jariyah", "Infak", "Hadiah", "Hibah"], a: 0 },
+        { q: "Allah Maha Pemaaf disebut….", o: ["Al-Ghaffar", "Al-Wahid", "As-Sabur", "Al-Halim"], a: 0 },
+        { q: "Hal utama yang harus dihapuskan dari hati pemberi maaf adalah….", o: ["Ketakutan", "Salah", "Dendam", "Senang"], a: 2 },
+        { q: "Lembaga pengeluar label halal di Indonesia adalah….", o: ["HALAL", "MUI", "UNESCO", "PSSI"], a: 1 },
+        { q: "Khalifah pertama setelah Rasulullah SAW meninggal adalah….", o: ["Abu Bakar Ashiddiq", "Umar bin Khattab", "Utsman bin Affan", "Ali Abi Thalib"], a: 0 },
+        { q: "Pada masa pemerintahan Umar bin Khattab r.a sang khalifah dipanggil dengan sebutan …. ", o: ["Amirul Mukminin", "Khalifah Rasul", "Ikhwanul", "Thariqul"], a: 0 },
+        { passage: "<b> Perhatikan pernyataan berikut !<br>1) Orang pertama yang mengakui peristiwa Isra’ Mi’raj <br>2) Orang yang menemani Nabi Muhammad SAW berhijrah ke Madinah <br>3) Sangat gigih melindungi orang yang memeluk agama Islam <br>4) Imam sholat pengganti Nabi Muhammad Saw ketika sedang sakit ", q: "Sahabat yang dipilih menjadi khalifah bedasarkan pernyataan-pernyataan diatas adalah....", o: ["Umar bin Khttab", "Utsman bin Affan", "Abu Bakar Ash-Shiddiq", "Ali bin Abu Thalib"], a: 2 },
+        { q: "Sifat Umar bin Khattab adalah….", o: ["Cerdas, tegas", "Sabar, kikir", "Tegas, takabur", "Sabar, sombong"], a: 0 },
+        { q: "Ayat ketiga Surah <span class='arabic'>ٱلْأَعْلَىٰ</span> adalah….", o: ["<span class='arabic'>سَبِّحِ ٱسْمَ</span>", "<span class='arabic'>ٱلَّذِى خَلَقَ</span>", "<span class='arabic'>وَٱلَّذِى قَدَّرَ فَهَدَىٰ</span>", "<span class='arabic'>وَٱلَّذِىٓ أَخْرَجَ</span>"], a: 2 },
+        { q: "Takdir mubram adalah ketentuan Allah yang….", o: ["Bisa diubah", "Pasti dan tetap", "Belum pasti", "Belum terjadi"], a: 1 },
+        { q: "Ahmad ingin menjadi anak yang pandai. Oleh karena itu, dia harus berusaha dengan cara belajar. Perilaku yang ditunjukan Ahmad menunjukan bahwa kepandaian termasuk takdir ….", o: ["Muallaq", "Mubram", "Qadar", "Qada"], a: 0 },
+        { q: "Sikap merusak lingkungan merupakan suatu sikap berbuat kerusakan yang dapat merugikan diri sendiri maupun orang lain. Orang yang membuat kerusaka terhadap lingkungan berarti ia menyalahgunakan amanah Allah Swt. Oleh karena itu sikap tersebut tergolong akhlak ….", o: ["Maimunah", "Mazmumah", "Mahmudah", "Mualamalah"], a: 1 },
+        { q: "Ashabil Kahfi adalah kisah 7 pemuda yang beriman kepada Allah SWT dan seekor anjing yang ditidurkan Allah SWT di dalam gua. Mereka di dalam gua bersembunyi dari kekejaman raja yang berkuasa saat itu. Kisah ini bersumber dari Al Quran surat Al Kahfi.Pemuda Ashabul Kahfi ini tinggal di dalam gua selama ...", o: ["39 tahun", "90 tahun", "390 tahun", "309 tahun"], a: 3 },
+        { q: "Q.S <span class='arabic'>ٱلْكَٰفِرُونَ</span> artinya….", o: ["Segumpal darah", "Orang-orang kafir", "Malam kemuliaan", "Buah tin"], a: 1 },
+        { q: "Kiamat besar disebut kiamat….", o: ["Sugra", "Kubra", "Wusta", "Awal"], a: 1 },
+        { q: "Q.S <span class='arabic'>ٱلْقَارِعَةُ</span> artinya….", o: ["Kelahiran", "Kebangkitan", "Hari kiamat", "Timbangan"], a: 2 },
+        { q: "Rukum iman ke lima adalah percaya kepada ….", o: ["Malaikat", "Kitab", "Rasul", "Hari kiamat"], a: 3 },
+        { q: "Di bawah ini adalah tanda-tanda hari kiamat semakin dekat melalui firman-firmannya kecuali ...", o: ["Banyak orang yang mengaku sebagai nabi dan rasul", "Ilmu agama dianggap tidak pentingg", "Banyak peperangan dan kerusuhan di muka bumi ini", "Kejahatan di muka bumi ini semakin berkurang"], a: 3 },
+        { q: "Q.S <span class='arabic'>ٱلْقَارِعَةُ</span> terdiri dari….", o: ["9 ayat", "10 ayat", "11 ayat", "12 ayat"], a: 2 },
+        { q: "<span class='arabic'>ٱلْبَاقِى</span> artinya Allah Maha….", o: ["Kekal", "Kuasa", "Kaya", "Bijaksana"], a: 0 },
+        { q: "Beriman kepada Qadha dan Qadar merupakan rukun iman keenam. pengertian dari Qadha menurut istilah adalah ketetapan Allah yang ...", o: ["dapat ditunda", "dapat diubah", "ditetapkan sejak Zaman azali", "sudah terjadi"], a: 2 },
+        { q: "Sebagai seorang anak, kita wajib menghormati dan mematuhi orang tua kita. berikut yang bukan merupakan contoh hormat dan patuh kepada orang tua adalah….", o: ["Meminta izin ketika hendak pergi bermain", "Mendoakan orang tua setelah shalat", "Menuruti perintah orangtua dengan pamrih", "Memberi salam saat datang dan keluar rumah"], a: 2 },
+        { q: "Ketika Nabi Ayyub as menderita sakit kulit hingga berbau tidak sedap, masyarakat menjauhi dan mengasingkannya, namun Nabi Ayyub tetap sabar dan tawakal dalam menghadapi cobaan dan ujian. Hikmah yang dapat kita teladani dari Nabi Ayub adalah….", o: ["Pasrah", "Sakit", "Sabar & tawakal", "Tahan sakit"], a: 2 },
+        { passage: "<b> Perhatikan kisah berikut !<br>1) Bisa berbicara waktu bayi <br>2) Bisa membuat burung dari tanah liat <br>3) Menghidupkan orang mati <br>4) Tongkatnya berubah menjadi ular", q: "Peristiwa yang tidak dialami nabi Isa adalah ....", o: ["1", "2", "3", "4"], a: 3 },
+        { q: "Kaum Muhajirin adalah penduduk Mekah yang akan pindah ke Madinah, sesampainya di Madinah diterima oleh kaum Anshar dengan senang hati, sampai-sampai kaum Anshar berebut untuk membantu kaum Muhajirin. Dalam peristiwa tersebut kaum Anshar memiliki sifat ", o: ["Penolong", "Dermawan", "Kerja keras", "Sombong"], a: 0 },
+        { q: "Ketika manusia memasuki surga, ia akan disambut oleh malaikat .....", o: ["Malik", "Ridwan", "Isrofil", "Nakir"], a: 1 },
+        { q: "Nabi Ismail adalah putra dari….", o: ["Azar", "Ibrahim", "Yunus", "Yahya"], a: 1 },
+        { passage: "1) Air<br>2) Hewan<br>3) Batu<br>4) Tumbuhan", q: "Benda lingkungan abiotik nomor….", o: ["1 dan 3", "3 dan 5", "2 dan 4", "4 dan 5"], a: 0 },
+        { q: "Pesan pokok Q.S. <span class='arabic'>ٱلْأَعْلَىٰ</span> adalah….", o: ["Bertasbih", "Belajar", "Berdakwah", "Menghafal"], a: 0 },
+        { q: "Berikut yang termasuk perilaku orang yang tidak beriman yang lebih mementingkan kehidupan dunia adalah ….", o: ["Syukur", "Materialistis", "Dermawan", "Hedonis"], a: 3 },
+        { passage: "<b> Perhatikan data beriku !<br>1) Membantu fakir miskin<br>2) Mengeluarkan Zakat<br>3) Melaksanakan Sholat<br>4) Membuang sampah ditempat sampah", q: "Berdasarkan data tersebut ,yang termasuk cara berbuat baik kepada lingkungan adalah …", o: ["No 1", "No 2", "No 3", "No 4"], a: 3 },
+        { q: "Berikut ini yang termasuk usaha manusia dalam rangka untuk menyelamatkan alam dari kerusakan adalah….", o: ["Menyalakan lampu listrik berlebihan ", "Penghematan lampu listrik berlebihan ", "Penanaman kembali /reboisasi ", "Menjaga flora dan fauna langka"], a: 2 }
+    ];
+
+    function handleStart() {
+        namaUser = document.getElementById('input-nama').value;
+        namaLembaga = document.getElementById('input-lembaga').value;
+        if (!namaUser || !namaLembaga) return alert("Isi Nama dan Pilih Sekolah!");
+
+        userAnswers = new Array(db.length).fill(null);
+        document.getElementById('screen-login').classList.add('hidden');
+        document.getElementById('screen-quiz').classList.remove('hidden');
+        document.getElementById('user-display').innerText = namaUser;
+        document.getElementById('school-display').innerText = namaLembaga;
+        loadSoal();
+    }
+
+    function loadSoal() {
+        const data = db[currentIdx];
+        const container = document.getElementById('opt-container');
+        const passageEl = document.getElementById('q-passage');
+        
+        document.getElementById('btn-prev').style.display = (currentIdx === 0) ? "none" : "block";
+        document.getElementById('btn-next').style.display = (userAnswers[currentIdx] !== null) ? "block" : "none";
+        
+        document.getElementById('progress-display').innerText = `${currentIdx + 1} / ${db.length}`;
+        
+        if (data.passage) {
+            passageEl.innerHTML = data.passage;
+            passageEl.classList.remove('hidden');
+        } else {
+            passageEl.classList.add('hidden');
+        }
+
+        document.getElementById('q-text').innerHTML = (currentIdx + 1) + ". " + data.q;
+        
+        container.innerHTML = "";
+        data.o.forEach((opt, i) => {
+            const btn = document.createElement('button');
+            btn.className = "btn-opt";
+            if (userAnswers[currentIdx] === i) btn.classList.add('selected');
+            btn.innerHTML = opt; // Menggunakan innerHTML agar tag span arabic di pilihan ganda berfungsi
+            btn.onclick = () => {
+                document.querySelectorAll('.btn-opt').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                userAnswers[currentIdx] = i; 
+                document.getElementById('btn-next').style.display = "block";
+            };
+            container.appendChild(btn);
+        });
+    }
+
+    function nextQuestion() {
+        currentIdx++;
+        if (currentIdx < db.length) {
+            loadSoal();
+        } else {
+            showResult();
+        }
+    }
+
+    function prevQuestion() {
+        if (currentIdx > 0) {
+            currentIdx--;
+            loadSoal();
+        }
+    }
+
+    function showResult() {
+        document.getElementById('screen-quiz').classList.add('hidden');
+        document.getElementById('screen-result').classList.remove('hidden');
+        
+        let totalBenar = 0;
+        userAnswers.forEach((ans, idx) => {
+            if (ans === db[idx].a) totalBenar++;
+        });
+
+        const final = Math.round((totalBenar / db.length) * 100);
+        document.getElementById('score-final').innerText = final;
+        document.getElementById('summary-text').innerHTML = `
+            <p>Siswa: <b>${namaUser}</b></p>
+            <p>Sekolah: <b>${namaLembaga}</b></p>
+            <p>Benar: ${totalBenar} dari ${db.length} soal</p>
+        `;
+        kirimKeSheets(namaUser, namaLembaga, final);
+    }
+
+    function kirimKeSheets(n, l, s) {
+        const status = document.getElementById('status-upload');
+        const data = { nama: n, lembaga: l, skor: s };
+
+        fetch(URL_GOOGLE_SCRIPT, {
+            method: "POST",
+            mode: "no-cors",
+            body: JSON.stringify(data)
+        })
+        .then(() => {
+            status.innerHTML = "✅ Data berhasil dikirim ke Spreadsheet.";
+            status.style.color = "green";
+        })
+        .catch(e => {
+            status.innerHTML = "❌ Gagal mengirim. Cek koneksi atau screenshot hasil.";
+            status.style.color = "red";
+        });
+    }
+</script>
+</body>
+</html>
